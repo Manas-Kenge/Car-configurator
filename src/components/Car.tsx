@@ -54,6 +54,7 @@ export function Car(props: JSX.IntrinsicElements['group']) {
 
     return (
         <group {...props} dispose={null}
+        //@ts-ignore
             ref={ref}
         >
             <directionalLight position={[5, 2, 5]} intensity={6} />
