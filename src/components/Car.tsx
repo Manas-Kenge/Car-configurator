@@ -37,7 +37,6 @@ type GLTFResult = GLTF & {
         ['930_wunderbaum']: THREE.MeshStandardMaterial
         material_0: THREE.MeshStandardMaterial
     }
-    // animations: GLTFAction[]
 }
 
 export function Car(props: JSX.IntrinsicElements['group']) {
