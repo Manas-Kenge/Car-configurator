@@ -2,7 +2,6 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Preload } from '@react-three/drei'
 import { Suspense } from 'react'
 import { Car } from './Car'
-// import { Picker } from './Picker'
 
 export const CarCanvas = () => {
     return <Canvas
@@ -18,7 +17,6 @@ export const CarCanvas = () => {
                 minPolarAngle={Math.PI / 2}
             />
             <Car />
-            {/* <Picker /> */}
         </Suspense>
         <Preload all />
     </Canvas>
