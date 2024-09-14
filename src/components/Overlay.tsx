@@ -4,6 +4,7 @@ import { useSnapshot } from 'valtio';
 import { state } from '../utils/store';
 import { useControls } from 'leva';
 
+
 export const Overlay = () => {
     const snap: { intro: boolean; color: string } = useSnapshot(state);
     const transition: { type: string; duration: number } = { type: 'spring', duration: 0.8 };
@@ -17,7 +18,6 @@ export const Overlay = () => {
         <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
             <motion.header initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={transition}>
                 <AiOutlineThunderbolt size="3em" />
-
             </motion.header>
             <AnimatePresence>
                 {snap.intro ? (
@@ -44,15 +44,15 @@ export const Overlay = () => {
                                         delay: 0.2,
                                         delayChildren: 0.2
                                     }}>
-                                    <p className=''>
-                                        Customize Your Dream car. <strong>Unleash your imagination</strong> and define your
-                                        own style.
-                                    </p>
                                     <button style={{ background: snap.color }} onClick={() => (state.intro = false)}>
                                         CUSTOMIZE IT <AiOutlineHighlight size="1.3em" />
                                     </button>
                                 </motion.div>
                             </div>
+                            <p className=''>
+                                Customize Your Dream car. <strong>Unleash your imagination</strong> and define your
+                                own style.
+                            </p>
                         </div>
                     </motion.section>
                 ) : (
@@ -66,19 +66,20 @@ export const Overlay = () => {
 };
 
 const Customizer = () => {
+    const snap = useSnapshot(state);
+    //@ts-ignore
     const { color }: { color: string } = useControls('Car', {
-        color: { value: '#EFBD4E' },
+        color: { value: snap.color, onChange: (v) => (state.color = v) },
     });
-
+    
     return (
         <div className="customizer">
             <div className="color-options">
                 <div className={`circle`} style={{ background: color }}></div>
             </div>
-
             <button
                 className="share"
-                style={{ background: color }}
+                style={{ background: snap.color }}
                 onClick={() => {
                     const link: HTMLAnchorElement = document.createElement('a');
                     link.setAttribute('download', 'canvas.png');
@@ -92,8 +93,7 @@ const Customizer = () => {
                 DOWNLOAD
                 <AiFillCamera size="1.3em" />
             </button>
-
-            <button className="exit" style={{ background: color }} onClick={() => (state.intro = true)}>
+            <button className="exit" style={{ background: snap.color }} onClick={() => (state.intro = true)}>
                 GO BACK
                 <AiOutlineArrowLeft size="1.3em" />
             </button>

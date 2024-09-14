@@ -1,16 +1,8 @@
 # Car Configurator
 
-This project is a car configurator built using Three.js, a powerful JavaScript library for creating 3D graphics in the browser. With this car configurator, users can customize various aspects of a car, such as its color and wheels and see the changes in real-time.
+This project is a car configurator built using Three.js, a powerful JavaScript library for creating 3D graphics in the browser. With this car configurator, users can customize its color car and see the changes in real-time.
 
-![alt text](./src/assets/image.png)
-
-## Features
-
-- Interactive 3D car model
-- Color customization options
-- Wheel selection
-- Accessories customization
-- Real-time preview of changes
+![alt text](./src/assets/image.png/)
 
 ## Installation
 

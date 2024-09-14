@@ -54,7 +54,7 @@ export function Car(props: JSX.IntrinsicElements['group']) {
     }, [snap.color]);
 
     const model = useControls('Car', options);
-    
+
     return (
         <group {...props} dispose={null}
             //@ts-ignore
