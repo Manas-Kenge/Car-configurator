@@ -3,6 +3,8 @@ import { useRef, useMemo } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import { useControls } from 'leva'
+import { useSnapshot } from 'valtio'
+import { state } from '../utils/store'
 
 type GLTFResult = GLTF & {
     nodes: {
@@ -43,18 +45,19 @@ export function Car(props: JSX.IntrinsicElements['group']) {
 
     const { nodes, materials } = useGLTF('./1975_porsche_911_930_turbo/scene-transformed.glb') as GLTFResult
     const ref = useRef<THREE.Mesh>(null!)
+    const snap = useSnapshot(state);
 
     const options = useMemo(() => {
         return {
-            color: { value: 'yellow' }
-        }
-    }, [])
+            color: { value: snap.color },
+        };
+    }, [snap.color]);
 
-    const model = useControls('Car', options)
-
+    const model = useControls('Car', options);
+    
     return (
         <group {...props} dispose={null}
-        //@ts-ignore
+            //@ts-ignore
             ref={ref}
         >
             <directionalLight position={[5, 2, 5]} intensity={6} />
