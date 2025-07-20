@@ -52,7 +52,7 @@ const CameraRig: FC<{ children: React.ReactNode }> = ({ children }) => {
         }
         
         if (snap.intro || isTransitioning.current) {
-            const targetPosition = snap.intro ? [-state.viewport.width / 4, 0, 5] : [10, 0, 5];
+            const targetPosition: [number, number, number] = snap.intro ? [-state.viewport.width / 4, 0, 5] : [10, 0, 5];
             const currentDistance = state.camera.position.distanceTo({ x: targetPosition[0], y: targetPosition[1], z: targetPosition[2] } as any);
             
             easing.damp3(state.camera.position, targetPosition, 0.25, delta);

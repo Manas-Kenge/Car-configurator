@@ -4,11 +4,10 @@ import { useSnapshot } from 'valtio';
 import { state } from '../utils/store';
 import { useControls } from 'leva';
 
-
 export const Overlay = () => {
     const snap: { intro: boolean; color: string } = useSnapshot(state);
-    const transition: { type: string; duration: number } = { type: 'spring', duration: 0.8 };
-    const config: { initial: object; animate: object; exit: object } = {
+    const transition = { type: 'spring', duration: 0.8 } as const;
+    const config = {
         initial: { x: -100, opacity: 0, transition: { ...transition, delay: 0.5 } },
         animate: { x: 0, opacity: 1, transition: { ...transition, delay: 0 } },
         exit: { x: -100, opacity: 0, transition: { ...transition, delay: 0 } }
